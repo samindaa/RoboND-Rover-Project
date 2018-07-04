@@ -143,7 +143,7 @@ def perception_step(Rover):
                               ])
     warped, mask = perspect_transform(image, source, destination)
 
-    threshed = ground_thresh_with_hsv(warped, v_thresh=170)
+    threshed = ground_thresh_with_hsv(warped, v_thresh=210) # 1024 x 768
     # From video. All potential obs pixels within the view area
     obs = np.absolute(np.float32(threshed) - 1) * mask
 
