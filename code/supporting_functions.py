@@ -151,6 +151,11 @@ def create_output_images(Rover):
       pil_img.save(buff, format="JPEG")
       encoded_string2 = base64.b64encode(buff.getvalue()).decode("utf-8")
 
+      # To Visdom
+      #Rover.v.line(np.array([fidelity]), X=np.array([Rover.total_time]), win=Rover.v_fidelity, update='append')
+      #Rover.v.line(np.array([perc_mapped]), X=np.array([Rover.total_time]), win=Rover.v_perc_mapped, update='append')
+      #Rover.v.line(np.array([samples_located]), X=np.array([Rover.total_time]), win=Rover.v_samples_located, update='append')
+
       return encoded_string1, encoded_string2
 
 

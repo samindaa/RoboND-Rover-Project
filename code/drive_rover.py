@@ -16,6 +16,8 @@ import json
 import pickle
 import matplotlib.image as mpimg
 import time
+# if visodom is installed
+#import visdom
 
 # Import functions for perception and decision making
 from perception import perception_step
@@ -77,6 +79,24 @@ class RoverState():
         self.near_sample = 0 # Will be set to telemetry value data["near_sample"]
         self.picking_up = 0 # Will be set to telemetry value data["picking_up"]
         self.send_pickup = False # Set to True to trigger rock pickup
+        # Visdom server to visualize fidelity and perc_mapped
+        #self.v = visdom.Visdom()
+        #assert self.v.check_connection()
+        # self.v_fidelity = self.v.line(np.array([100.0]), X=np.array([0.0]),
+        #                               opts=dict(title="Fidelity",
+        #                                         xlabel='total_time',
+        #                                         ylabel='Percentage'))
+        # self.v_perc_mapped = self.v.line(np.array([0.0]), X=np.array([0.0]),
+        #                               opts=dict(title="Percentage Mapped",
+        #                                         xlabel='total_time',
+        #                                         ylabel='Percentage'))
+        # self.v_samples_located = self.v.line(np.array([0]), X=np.array([0.0]),
+        #                                  opts=dict(title="Samples Located",
+        #                                            xlabel='total_time',
+        #                                            ylabel='Count'))
+
+
+
 # Initialize our rover 
 Rover = RoverState()
 
