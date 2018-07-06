@@ -74,11 +74,11 @@ I have not changed the implementation available in __decision_step__.
 **Note: running the simulator with different choices of resolution and graphics quality may produce different results, particularly on different machines!  Make a note of your simulator settings (resolution and graphics quality set on launch) and frames per second (FPS output to terminal by `drive_rover.py`) in your writeup when you submit the project so your reviewer can reproduce your results.**
 
 I have started the simulator in autonomous mode with the configuration __1024 x 768__, 
-__Fastest__, __Mac__, and __FPS 22 to 29__.  The rover maintains at least __40%__ of the environment with __60%__ 
+__Fastest__, __Mac__, and __FPS 22 to 34__.  The rover maintains at least __40%__ of the environment with __60%__ 
 fidelity against the ground truth. It also maps the location of the rock samples. 
 I have not changed the __decision_step__ to pick any rocks up, but have them appear in the 
-map via __Rover.worldmap[:,:,1]__. One of the example runs for fidelity, percentage mapped, and 
-sample located is as follows (using Visdom server):
+map via __Rover.worldmap[:,:,1]__. One of the example runs for fidelity, percentage mapped, 
+sample located, and pose (position only) is as follows (using Visdom server):
 
 
 ![alt text](./misc/fidelity.png)
@@ -86,6 +86,8 @@ sample located is as follows (using Visdom server):
 ![alt text](./misc/perc_mapped.png)
 
 ![alt text](./misc/samples_located.png)
+
+![alt text](./misc/pose.png)
 
 
 ## Observed problems in the implementation
