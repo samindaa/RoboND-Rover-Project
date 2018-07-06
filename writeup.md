@@ -27,7 +27,7 @@ directly provided the thresholds.
 ![alt text](./misc/rock_threshed3.png)
 
 
-#### 1. Populate the `process_image()` function with the appropriate analysis steps to map pixels identifying navigable terrain, obstacles and rock samples into a worldmap.  Run `process_image()` on your test data using the `moviepy` functions provided to create video output of your result. 
+#### 2. Populate the `process_image()` function with the appropriate analysis steps to map pixels identifying navigable terrain, obstacles and rock samples into a worldmap.  Run `process_image()` on your test data using the `moviepy` functions provided to create video output of your result. 
 
 As recommended by project video, I have created the _mask_ in __perspect_transform__, which has
 been used in __process_image__ to generate the obstacle map. I have followed the instructions
@@ -58,15 +58,49 @@ as follows:
 
 #### 1. Fill in the `perception_step()` (at the bottom of the `perception.py` script) and `decision_step()` (in `decision.py`) functions in the autonomous mapping scripts and an explanation is provided in the writeup of how and why these functions were modified as they were.
 
+I have implemented the __perception_step__ method similar to __process_image__ with color selection
+methods and thresholds as before. There are simple modifications such as updating the world map
+as follows:
+
+```python
+Rover.worldmap[y_world, x_world, 2] += 10
+Rover.worldmap[obs_y_world, obs_x_world, 0] += 1
+```
+
+I have not changed the implementation available in __decision_step__. 
 
 #### 2. Launching in autonomous mode your rover can navigate and map autonomously.  Explain your results and how you might improve them in your writeup.  
 
 **Note: running the simulator with different choices of resolution and graphics quality may produce different results, particularly on different machines!  Make a note of your simulator settings (resolution and graphics quality set on launch) and frames per second (FPS output to terminal by `drive_rover.py`) in your writeup when you submit the project so your reviewer can reproduce your results.**
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+I have started the simulator in autonomous mode with the configuration __1024 x 768__, 
+__Fastest__, and on a __Mac__. The rover maintains at least __40%__ of the environment with __60%__ 
+fidelity (accuracy) against the ground truth. It also maps the location of the rock samples. 
+I have not changed the __decision_step__ to pick any rocks up, but have them appear in the 
+map via __Rover.worldmap[:,:,1]__. One of the example runs for fidelity, percentage mapped, and 
+sample located as follows collected from Visdom:
 
 
+![alt text](./misc/fidelity.png)
 
-![alt text][image3]
+![alt text](./misc/perc_mapped.png)
+
+![alt text](./misc/samples_located.png)
+
+
+## Observed problems in the implementation
+
+* During some starts in the autonomous mode, the rover was placed very closed to rocks and it
+gets stuck inside the rocks. When you further analyse these situation, you would see that the 
+image does not show the rocks or the camera is about the rocks. When this happened, I have 
+manually controlled the rover out of the situation. 
+
+* Some situations, the rover circle around in the same mapped environment. I did not update the
+_decision_step_ decision step to over come this situation though. If it were to repeat, I have took
+manual control of the rover for a few seconds and navigated to a another area.
+
+* There are methods we learned on self driving car course to implement behaviors. In the project, 
+I have not investigated on those methods.  
+
 
 
