@@ -97,8 +97,8 @@ gets stuck inside the rocks. When you further analyse these situation, you would
 image does not show the rocks or the camera is about the rocks. When this happened, I have 
 manually controlled the rover out of the situation. 
 
-* Some situations, the rover circle around in the same mapped environment. I did not update the
-_decision_step_ decision step to over come this situation though. If it were to repeat, I have took
+* Some situations, the rover circle around in the same mapped environment. I have not updated the
+_decision_step_ logic to over come this situation. If it were to happen, I have took
 manual control of the rover for a few seconds and navigated to a another area.
 
 * There are methods we learned on self driving car course to implement behaviors. In the project, 
