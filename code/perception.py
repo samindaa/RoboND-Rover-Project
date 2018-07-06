@@ -143,7 +143,7 @@ def perception_step(Rover):
                               ])
     warped, mask = perspect_transform(image, source, destination)
 
-    threshed = ground_thresh_with_hsv(warped, v_thresh=200) # 1024 x 768
+    threshed = ground_thresh_with_hsv(warped, v_thresh=200)  # 1024 x 768
     # From video. All potential obs pixels within the view area
     obs = np.absolute(np.float32(threshed) - 1) * mask
 
@@ -168,7 +168,7 @@ def perception_step(Rover):
     Rover.nav_angles = angles
     Rover.nav_dists = dist
 
-    rocks = rock_thresh_with_hsv(warped)
+    rocks = rock_thresh_with_hsv(warped, s_thresh=200, v_thresh_min=100, v_thresh_max=180)
     if rocks.any():
         print('debug_rock: {}'.format(Rover.start_time))
         rock_xpix, rock_ypix = rover_coords(rocks)
