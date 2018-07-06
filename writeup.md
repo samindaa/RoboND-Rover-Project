@@ -15,7 +15,7 @@ constant, I only have to work with S and V for tune color threshold.
 The empirical evidence has shown that only V channel is provide enough information to select
 the navigable area.  
 
-![alt text][misc/img2_LV.png]
+![alt text][./misc/img2_LV.png]
 
 I have used a histogram to find the best threshold for calibration images _test_dataset_, and 
 the function __ground_thresh_with_hsv__ provides the implementation.  
