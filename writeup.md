@@ -15,13 +15,32 @@ constant, I only have to work with S and V for tune color threshold.
 The empirical evidence has shown that only V channel is provide enough information to select
 the navigable area.  
 
-[image1]: ./misc/img2_LV.png
+![alt text](./misc/img2_LV.png)
 
 I have used a histogram to find the best threshold for calibration images _test_dataset_, and 
-the function __ground_thresh_with_hsv__ provides the implementation.  
+the function __ground_thresh_with_hsv__ provides the implementation. I have also analysed the 
+profies on S and V for non-navigable areas while tuning the threshold. 
+
+I have used both S and V channels to find rocks in __rock_thresh_with_hsv__, and a histogram analysis
+directly provided the thresholds.  
+
+![alt text](./misc/rock_threshed3.png)
+
 
 #### 1. Populate the `process_image()` function with the appropriate analysis steps to map pixels identifying navigable terrain, obstacles and rock samples into a worldmap.  Run `process_image()` on your test data using the `moviepy` functions provided to create video output of your result. 
-And another! 
+
+As recommended by project video, I have created the _mask_ in __perspect_transform__, which has
+been used in __process_image__ to generate the obstacle map. I have followed the instructions
+therewith to implement the method and generated the video. 
+
+<p align="center">
+<img src="output/test_mapping.gif" width="500"/>
+</p>
+
+I have collected a training dataset, using the training mode in the simulator with setting __1024 x 768__, 
+__Fastest__, and on a Mac. The parameter, __v_thresh=200__, for __ground_thresh_with_hsv__ worked 
+well here as well as the autonomous mode.    
+ 
 
 ![alt text][image2]
 ### Autonomous Navigation and Mapping
