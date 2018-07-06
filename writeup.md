@@ -39,7 +39,19 @@ therewith to implement the method and generated the video.
 
 I have collected a training dataset, using the training mode in the simulator with setting __1024 x 768__, 
 __Fastest__, and on a Mac. The parameter, __v_thresh=200__, for __ground_thresh_with_hsv__ worked 
-well here as well as the autonomous mode.    
+well here as well as the autonomous mode. An example image, perspective transformation, rover coordinate,
+and polar coordinate as follow.
+
+![alt text](./misc/nav_train.png)
+
+I have used the parameters, __s_thresh = 200, v_thresh_min = 100,__ and __v_thresh_max = 180__ to detect
+rocks in test and training images. For example, on my training set -- __1024 x 768__, 
+__Fastest__, and __Mac__ -- the image _robocam_2018_07_04_16_05_10_350.png_ and the threshold image 
+as follows:
+
+![alt text](./misc/rock_img_train.png)
+
+![alt text](./misc/rock_img_th.png)
  
 
 ![alt text][image2]
